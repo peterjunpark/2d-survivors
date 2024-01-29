@@ -1,7 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://r5qa8s4fy1yg"]
+[gd_scene load_steps=5 format=3 uid="uid://r5qa8s4fy1yg"]
 
 [ext_resource type="Script" path="res://scenes/basic_mob/BasicMob.cs" id="1_0iwru"]
 [ext_resource type="Texture2D" uid="uid://d17idoxk2ravk" path="res://scenes/basic_mob/basic_mob.png" id="1_3nqt6"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_i6dqo"]
+radius = 11.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7a2jq"]
 radius = 5.0
@@ -10,6 +13,14 @@ radius = 5.0
 collision_layer = 0
 script = ExtResource("1_0iwru")
 
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -4)
+shape = SubResource("CircleShape2D_i6dqo")
+
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_3nqt6")
 offset = Vector2(2.08165e-12, -4)
@@ -17,5 +28,3 @@ offset = Vector2(2.08165e-12, -4)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(2.08165e-12, -5)
 shape = SubResource("CircleShape2D_7a2jq")
-
-[node name="Area2D" type="Area2D" parent="."]

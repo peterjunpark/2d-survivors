@@ -1,7 +1,5 @@
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.InteropServices;
 using Godot;
 
 namespace TwoDSurvivors.SwordAbility
@@ -19,7 +17,7 @@ namespace TwoDSurvivors.SwordAbility
             GetNode<Timer>("Timer").Timeout += HandleTimerTimeout;
         }
 
-        public void HandleTimerTimeout()
+        private void HandleTimerTimeout()
         {
             Player.Player player = (Player.Player)GetTree().GetFirstNodeInGroup("player");
             if (player is null) return;
@@ -34,11 +32,19 @@ namespace TwoDSurvivors.SwordAbility
             // Sort them by proximity to the player.
             mobs = new Godot.Collections.Array<Node>(mobs.OrderBy(mob => ((Node2D)mob).GlobalPosition.DistanceSquaredTo(player.GlobalPosition)));
 
+            // Get closest mob and cast to BasicMob to access its properties/methods.
+            BasicMob.BasicMob closestMob = (BasicMob.BasicMob)mobs[0];
+
             // Instantiate sword in the main scene...
             Node2D swordInstance = (Node2D)SwordAbility.Instantiate();
             player.GetParent().AddChild(swordInstance);
-            // on top of the nearest mob.
-            swordInstance.GlobalPosition = ((Node2D)mobs[0]).GlobalPosition;
+
+            // Rotate sword and instantiate with a slight offset from the target mob.
+            swordInstance.GlobalPosition = closestMob.GlobalPosition + Vector2.Right.Rotated((float)GD.RandRange(0.0f, Math.Tau)) * 4;
+
+            // Point the sword's hitbox in the direction of the mob.
+            Vector2 mobDirection = closestMob.GlobalPosition - swordInstance.GlobalPosition;
+            swordInstance.Rotation = mobDirection.Angle();
         }
     }
 }
