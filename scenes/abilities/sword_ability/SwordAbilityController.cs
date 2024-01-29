@@ -6,6 +6,7 @@ namespace TwoDSurvivors.SwordAbility
 {
     public partial class SwordAbilityController : Node
     {
+        // TODO
         private const int MaxRange = 150;
 
         [Export]
