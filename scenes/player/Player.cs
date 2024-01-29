@@ -25,6 +25,7 @@ namespace TwoDSurvivors.Player
             // On a joystick, it returns a float between 0 and 1.
             float xMovement =
                 Input.GetActionStrength("move_right") - Input.GetActionStrength("move_left");
+
             float yMovement =
                 Input.GetActionStrength("move_down") - Input.GetActionStrength("move_up");
 
