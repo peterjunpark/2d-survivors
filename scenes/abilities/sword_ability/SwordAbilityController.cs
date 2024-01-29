@@ -6,7 +6,7 @@ namespace TwoDSurvivors.SwordAbility
 {
     public partial class SwordAbilityController : Node
     {
-        // TODO
+        // TODO:
         private const int MaxRange = 150;
 
         [Export]
@@ -21,6 +21,7 @@ namespace TwoDSurvivors.SwordAbility
         private void HandleTimerTimeout()
         {
             Player.Player player = (Player.Player)GetTree().GetFirstNodeInGroup("player");
+
             if (player is null) return;
 
             // TODO: These type conversions might be suboptimal due to marshalling.
@@ -35,6 +36,12 @@ namespace TwoDSurvivors.SwordAbility
 
             // Get closest mob and cast to BasicMob to access its properties/methods.
             BasicMob.BasicMob closestMob = (BasicMob.BasicMob)mobs[0];
+
+            // Make sure closestMob (target) is in range
+            if (closestMob.GlobalPosition.DistanceSquaredTo(player.GlobalPosition) > Math.Pow(MaxRange, 2))
+            {
+                return;
+            }
 
             // Instantiate sword in the main scene...
             Node2D swordInstance = (Node2D)SwordAbility.Instantiate();
