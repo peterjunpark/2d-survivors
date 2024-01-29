@@ -1,10 +1,12 @@
+using System;
 using Godot;
 
 namespace TwoDSurvivors.Player
 {
     public partial class Player : CharacterBody2D
     {
-        private const int MaxSpeed = 200;
+        private const int MaxSpeed = 140;
+        private const int Acceleration = 30;
 
         // Called when the node enters the scene tree for the first time.
         public override void _Ready() { }
@@ -13,8 +15,10 @@ namespace TwoDSurvivors.Player
         public override void _Process(double delta)
         {
             Vector2 movementVector = GetMovementVector();
-            Vector2 direction = movementVector.Normalized();
-            Velocity = direction * MaxSpeed;
+            Vector2 targetVelocity = movementVector.Normalized() * MaxSpeed;
+
+            Velocity = Velocity.Lerp(targetVelocity,
+                1.0f - (float)Math.Exp(-delta * Acceleration));
             // Tell the CharacterBody2D to move based on Velocity.
             _ = MoveAndSlide();
         }

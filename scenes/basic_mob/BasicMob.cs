@@ -4,7 +4,7 @@ namespace TwoDSurvivors.BasicMob
 {
     public partial class BasicMob : CharacterBody2D
     {
-        private const int MaxSpeed = 75;
+        private const int MaxSpeed = 69;
 
         // Called when the node enters the scene tree for the first time.
         public override void _Ready()

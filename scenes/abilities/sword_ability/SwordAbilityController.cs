@@ -7,7 +7,7 @@ namespace TwoDSurvivors.SwordAbility
     public partial class SwordAbilityController : Node
     {
         // TODO:
-        private const int MaxRange = 150;
+        private const int MaxRange = 80;
 
         [Export]
         public PackedScene SwordAbility { get; private set; }

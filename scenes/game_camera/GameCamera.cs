@@ -20,7 +20,7 @@ namespace TwoDSurvivors.GameCamera
             // LERP between current position to target position for smoother camera movement.
             GlobalPosition = GlobalPosition.Lerp(
                 TargetPosition,
-                1.0f - (float)Math.Exp(-delta * 10)
+                1.0f - (float)Math.Exp(-delta * 20)
             );
         }
 
