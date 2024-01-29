@@ -21,7 +21,7 @@ namespace TwoDSurvivors.BasicMob
         {
             Player.Player playerNode = (Player.Player)GetTree().GetFirstNodeInGroup("player");
 
-            return playerNode == null
+            return playerNode is null
                 ? Vector2.Zero
                 : (playerNode.GlobalPosition - GlobalPosition).Normalized();
         }
