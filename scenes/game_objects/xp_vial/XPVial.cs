@@ -1,7 +1,7 @@
 using Godot;
 using TwoDSurvivors.Autoload;
 
-namespace TwoDSurvivors.XPVial;
+namespace TwoDSurvivors.GameObjects;
 
 public partial class XPVial : Node2D
 {

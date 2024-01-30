@@ -33,6 +33,7 @@ public partial class BasicMob : CharacterBody2D
 
     private void HandleAreaEntered(Area2D otherArea)
     {
+        Health.Damage(100);
         QueueFree();
     }
 }
