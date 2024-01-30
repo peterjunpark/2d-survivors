@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://c46j76is36lc0"]
 
 [ext_resource type="Script" path="res://scenes/managers/MobManager.cs" id="1_vv0ii"]
-[ext_resource type="PackedScene" uid="uid://r5qa8s4fy1yg" path="res://scenes/basic_mob/basic_mob.tscn" id="2_jyhuj"]
+[ext_resource type="PackedScene" uid="uid://r5qa8s4fy1yg" path="res://scenes/game_objects/basic_mob/basic_mob.tscn" id="2_jyhuj"]
 
 [node name="MobManager" type="Node"]
 script = ExtResource("1_vv0ii")

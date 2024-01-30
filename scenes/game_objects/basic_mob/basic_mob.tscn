@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://r5qa8s4fy1yg"]
 
-[ext_resource type="Script" path="res://scenes/basic_mob/BasicMob.cs" id="1_0iwru"]
-[ext_resource type="Texture2D" uid="uid://d17idoxk2ravk" path="res://scenes/basic_mob/basic_mob.png" id="1_3nqt6"]
+[ext_resource type="Script" path="res://scenes/game_objects/basic_mob/BasicMob.cs" id="1_0iwru"]
+[ext_resource type="Texture2D" uid="uid://d17idoxk2ravk" path="res://scenes/game_objects/basic_mob/basic_mob.png" id="1_3nqt6"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_i6dqo"]
 radius = 11.0
