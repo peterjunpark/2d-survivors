@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://veo3jmmfbppf"]
+
+[ext_resource type="Script" path="res://scenes/managers/GameTimeManager.cs" id="1_gc2lq"]
+
+[node name="GameTimeManager" type="Node"]
+script = ExtResource("1_gc2lq")
+
+[node name="GameTimer" type="Timer" parent="."]
+wait_time = 60.0
+one_shot = true
+autostart = true
