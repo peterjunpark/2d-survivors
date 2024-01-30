@@ -16,8 +16,9 @@ public partial class XPVialDropComponent : Node
         HPComponent.Death += HandleDeath;
     }
 
-    private void HandleDeath(bool dead)
+    private void HandleDeath()
     {
+        GD.Print("i'm dead");
         if (GD.Randf() > DropChance) return;
 
         if (XPVialScene is null) return;

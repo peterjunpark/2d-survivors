@@ -5,13 +5,14 @@ namespace TwoDSurvivors.GameObjects;
 public partial class BasicMob : CharacterBody2D
 {
     public HealthComponent Health { get; private set; }
+    public Area2D Hurtbox { get; private set; }
     private const int MaxSpeed = 69;
 
-    // Called when the node enters the scene tree for the first time.
+    // // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
         Health = GetNode<HealthComponent>("HealthComponent");
-        GetNode<Area2D>("Area2D").AreaEntered += HandleAreaEntered;
+        Hurtbox = GetNode<Area2D>("HurtboxComponent");
     }
 
     // Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -20,6 +21,7 @@ public partial class BasicMob : CharacterBody2D
         Vector2 direction = GetDirectionToPlayer();
         Velocity = direction * MaxSpeed;
         _ = MoveAndSlide();
+        GD.Print(Health.CurrentHealth);
     }
 
     private Vector2 GetDirectionToPlayer()
@@ -29,11 +31,5 @@ public partial class BasicMob : CharacterBody2D
         return playerNode is null
             ? Vector2.Zero
             : (playerNode.GlobalPosition - GlobalPosition).Normalized();
-    }
-
-    private void HandleAreaEntered(Area2D otherArea)
-    {
-        Health.Damage(100);
-        QueueFree();
     }
 }

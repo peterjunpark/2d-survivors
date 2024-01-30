@@ -6,8 +6,8 @@ using TwoDSurvivors.GameObjects;
 namespace TwoDSurvivors.Abilities;
 public partial class SwordAbilityController : Node
 {
-    // TODO:
     private const int MaxRange = 80;
+    private const int Damage = 5;
 
     [Export]
     public PackedScene SwordAbility { get; private set; }
@@ -38,14 +38,12 @@ public partial class SwordAbilityController : Node
         BasicMob closestMob = (BasicMob)mobs[0];
 
         // Make sure closestMob (target) is in range
-        if (closestMob.GlobalPosition.DistanceSquaredTo(player.GlobalPosition) > Math.Pow(MaxRange, 2))
-        {
-            return;
-        }
+        if (closestMob.GlobalPosition.DistanceSquaredTo(player.GlobalPosition) > Math.Pow(MaxRange, 2)) return;
 
         // Instantiate sword in the main scene...
-        Node2D swordInstance = (Node2D)SwordAbility.Instantiate();
+        SwordAbility swordInstance = (SwordAbility)SwordAbility.Instantiate();
         player.GetParent().AddChild(swordInstance);
+        swordInstance.Hitbox.Damage = Damage;
 
         // Rotate sword and instantiate with a slight offset from the target mob.
         swordInstance.GlobalPosition = closestMob.GlobalPosition + Vector2.Right.Rotated((float)GD.RandRange(0.0f, Math.Tau)) * 4;
