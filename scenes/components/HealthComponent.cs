@@ -19,7 +19,6 @@ public partial class HealthComponent : Node
 
     public void Damage(int damage)
     {
-        GD.Print("oof");
         CurrentHealth = Math.Max(0, CurrentHealth - damage);
         // Defer call to next idle frame.
         CheckDeathCallable.CallDeferred();

@@ -21,7 +21,6 @@ public partial class BasicMob : CharacterBody2D
         Vector2 direction = GetDirectionToPlayer();
         Velocity = direction * MaxSpeed;
         _ = MoveAndSlide();
-        GD.Print(Health.CurrentHealth);
     }
 
     private Vector2 GetDirectionToPlayer()

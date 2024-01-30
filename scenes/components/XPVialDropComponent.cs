@@ -9,7 +9,7 @@ public partial class XPVialDropComponent : Node
     [Export] public PackedScene XPVialScene { get; private set; }
     [Export] public HealthComponent HPComponent { get; private set; }
     [Export(PropertyHint.Range, "0, 1")]
-    public float DropChance { get; private set; } = 0.5f;
+    public float DropChance { get; private set; } = 1f;
 
     public override void _Ready()
     {
@@ -18,7 +18,6 @@ public partial class XPVialDropComponent : Node
 
     private void HandleDeath()
     {
-        GD.Print("i'm dead");
         if (GD.Randf() > DropChance) return;
 
         if (XPVialScene is null) return;
