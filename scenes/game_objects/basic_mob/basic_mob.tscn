@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://r5qa8s4fy1yg"]
+[gd_scene load_steps=6 format=3 uid="uid://r5qa8s4fy1yg"]
 
 [ext_resource type="Script" path="res://scenes/game_objects/basic_mob/BasicMob.cs" id="1_0iwru"]
 [ext_resource type="Texture2D" uid="uid://d17idoxk2ravk" path="res://scenes/game_objects/basic_mob/basic_mob.png" id="1_3nqt6"]
+[ext_resource type="PackedScene" uid="uid://bw42vmlx0vibm" path="res://scenes/components/health_component.tscn" id="2_gbxdp"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_i6dqo"]
 radius = 11.0
@@ -14,6 +15,8 @@ collision_layer = 8
 collision_mask = 9
 motion_mode = 1
 script = ExtResource("1_0iwru")
+
+[node name="HealthComponent" parent="." instance=ExtResource("2_gbxdp")]
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 0

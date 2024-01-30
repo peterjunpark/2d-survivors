@@ -1,6 +1,6 @@
 using Godot;
 
-namespace TwoDSurvivors.GameEvents;
+namespace TwoDSurvivors.Autoload;
 
 public partial class GameEvents : Node
 {

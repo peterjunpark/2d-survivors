@@ -1,16 +1,17 @@
 using Godot;
+using TwoDSurvivors.Autoload;
 
 namespace TwoDSurvivors.XPVial;
 
 public partial class XPVial : Node2D
 {
-    private GameEvents.GameEvents GameEvents;
+    private GameEvents GameEvents;
 
     public Area2D Area2D { get; private set; }
 
     public override void _Ready()
     {
-        GameEvents = GetNode<GameEvents.GameEvents>("/root/GameEvents");
+        GameEvents = GetNode<GameEvents>("/root/GameEvents");
 
         Area2D = GetNode<Area2D>("Area2D");
         Area2D.AreaEntered += HandleAreaEntered;
