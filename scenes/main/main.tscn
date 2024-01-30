@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://d3y1nwb26cvg7"]
+[gd_scene load_steps=10 format=3 uid="uid://d3y1nwb26cvg7"]
 
 [ext_resource type="TileSet" uid="uid://by3ovsy7fxyml" path="res://resources/dungeon_tileset.tres" id="1_8gdg8"]
 [ext_resource type="PackedScene" uid="uid://ceocg88shg6ri" path="res://scenes/game_objects/game_camera/game_camera.tscn" id="1_dlhy1"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://cpouhnj8hfwko" path="res://scenes/ui/xp_bar.tscn" id="2_nj51a"]
 [ext_resource type="PackedScene" uid="uid://bcygbhrcgreuy" path="res://scenes/managers/xp_manager.tscn" id="4_lxdcq"]
 [ext_resource type="PackedScene" uid="uid://ugnwu5ndyyam" path="res://scenes/ui/game_time_ui.tscn" id="5_88pii"]
+[ext_resource type="PackedScene" uid="uid://bdnq830an6e0a" path="res://scenes/managers/upgrade_manager.tscn" id="6_tl1eu"]
 
 [node name="Main" type="Node"]
 
@@ -22,6 +23,9 @@ XPManager = NodePath("../XPManager")
 [node name="MobManager" parent="." instance=ExtResource("1_epu2w")]
 
 [node name="XPManager" parent="." instance=ExtResource("4_lxdcq")]
+
+[node name="UpgradeManager" parent="." node_paths=PackedStringArray("XPManager") instance=ExtResource("6_tl1eu")]
+XPManager = NodePath("../XPManager")
 
 [node name="GameCamera" parent="." instance=ExtResource("1_dlhy1")]
 visible = false

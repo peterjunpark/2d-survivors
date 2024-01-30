@@ -9,6 +9,6 @@ public partial class GameEvents : Node
 
     public void EmitXPVialCollected(float number)
     {
-        EmitSignal(SignalName.XPVialCollected, number);
+        _ = EmitSignal(SignalName.XPVialCollected, number);
     }
 }

@@ -5,10 +5,13 @@ namespace TwoDSurvivors.Components;
 
 public partial class HealthComponent : Node
 {
-    [Export] public int MaxHealth { get; private set; } = 10;
+    [Export]
+    public int MaxHealth { get; private set; } = 10;
     public int CurrentHealth { get; private set; }
-    [Signal] public delegate void DeathEventHandler();
-    public bool Dead { get; private set; } = false;
+
+    [Signal]
+    public delegate void DeathEventHandler();
+    public bool Dead { get; private set; }
     private Callable CheckDeathCallable;
 
     public override void _Ready()
@@ -29,7 +32,7 @@ public partial class HealthComponent : Node
         if (CurrentHealth <= 0)
         {
             // Emit signal that the owner of this HealthComponent is dead.
-            EmitSignal(SignalName.Death);
+            _ = EmitSignal(SignalName.Death);
             Owner.QueueFree();
         }
     }

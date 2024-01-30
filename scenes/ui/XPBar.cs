@@ -20,7 +20,6 @@ public partial class XPBar : CanvasLayer
     private void HandleXPUpdate(float currentXP, float targetXP)
     {
         float xpPercent = currentXP / targetXP;
-        GD.Print($"xp percent: {xpPercent}");
         XPProgressBar.Value = xpPercent;
     }
 }

@@ -3,3 +3,8 @@ root = true
 [*.cs]
 indent_style = space
 indent_size = 4
+
+#### Diagnostic configuration ####
+
+## "Allow file-scoped namespaces"
+dotnet_diagnostic.IDE0160.severity = none

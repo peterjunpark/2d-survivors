@@ -24,7 +24,6 @@ MaxHealth = 5
 
 [node name="XPVialDropComponent" parent="." node_paths=PackedStringArray("HPComponent") instance=ExtResource("3_gy3p4")]
 HPComponent = NodePath("../HealthComponent")
-DropChance = 1.0
 
 [node name="HurtboxComponent" parent="." node_paths=PackedStringArray("HealthComponent") instance=ExtResource("4_buq5k")]
 HealthComponent = NodePath("../HealthComponent")
