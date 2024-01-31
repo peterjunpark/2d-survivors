@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using Godot;
 using TwoDSurvivors.Resources;
+using TwoDSurvivors.UI;
 
 namespace TwoDSurvivors.Managers;
 
@@ -23,6 +24,9 @@ public partial class UpgradeManager : Node
     [Export]
     private XPManager XPManager;
 
+    [Export]
+    private PackedScene AbilityUpgradeScreenScene;
+
     private readonly Dictionary<string, UpgradeInfo> CurrentUpgrades = [];
 
     public override void _Ready()
@@ -33,21 +37,35 @@ public partial class UpgradeManager : Node
     private void HandleLevelUp(int newLevel)
     {
         AbilityUpgrade chosenUpgrade = UpgradePool.PickRandom();
+        GD.Print(chosenUpgrade);
 
         if (chosenUpgrade is null)
         {
             return;
         }
 
-        bool hasUpgrade = CurrentUpgrades.ContainsKey(chosenUpgrade.Id);
+        // Instantiate upgrade screen.
+        AbilityUpgradeScreen abilityUpgradeScreenInstance = (AbilityUpgradeScreen)
+            AbilityUpgradeScreenScene.Instantiate();
+        // Set it as a child.
+        AddChild(abilityUpgradeScreenInstance);
+
+        abilityUpgradeScreenInstance.SetAbilityUpgrades([chosenUpgrade]);
+
+        /* ApplyUpgrade(chosenUpgrade); */
+    }
+
+    private void ApplyUpgrade(AbilityUpgrade abilityUpgrade)
+    {
+        bool hasUpgrade = CurrentUpgrades.ContainsKey(abilityUpgrade.Id);
 
         if (!hasUpgrade)
         {
-            CurrentUpgrades[chosenUpgrade.Id] = new UpgradeInfo(chosenUpgrade, 1);
+            CurrentUpgrades[abilityUpgrade.Id] = new UpgradeInfo(abilityUpgrade, 1);
         }
         else
         {
-            CurrentUpgrades[chosenUpgrade.Id].Quantity++;
+            CurrentUpgrades[abilityUpgrade.Id].Quantity++;
         }
     }
 }
