@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Godot;
 using TwoDSurvivors.Resources;
@@ -51,8 +52,12 @@ public partial class UpgradeManager : Node
         AddChild(abilityUpgradeScreenInstance);
 
         abilityUpgradeScreenInstance.SetAbilityUpgrades([chosenUpgrade]);
+        abilityUpgradeScreenInstance.AbilityUpgradeSelected += HandleAbilityUpgradeSelected;
+    }
 
-        /* ApplyUpgrade(chosenUpgrade); */
+    private void HandleAbilityUpgradeSelected(AbilityUpgrade abilityUpgrade)
+    {
+        ApplyUpgrade(abilityUpgrade);
     }
 
     private void ApplyUpgrade(AbilityUpgrade abilityUpgrade)
